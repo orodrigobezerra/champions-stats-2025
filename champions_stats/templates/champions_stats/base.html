@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats | UEFA Champions League 2024/25 | UEFA.com</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo_ucl.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="{% static 'images/logo_dark.svg' %}" alt="logo" class="'header-logo" weight="80" height="80">
+            <div class="header-text">
+                <h1>Champions League Stats</h1>
+                <p>Dados dos times, jogadores e estatísticas</p>
+            </div>
+            <div class="header-text">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'teams' %}">Times</a>
+                <a href="{% url 'players' %}">Jogadores</a>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+    <footer>
+        <p>&copy; 2024 Champions League Stats</p>
+    </footer>
+</html>

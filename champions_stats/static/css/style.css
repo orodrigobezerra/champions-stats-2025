@@ -1,0 +1,115 @@
+/* champions_stats/static/champions_stats/css/style.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+header {
+  background-color: #003580;
+  background-image: url("/static/images/backgroundDark01L.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 30px 10px;
+  display: flex;
+  justify-content: center;  /* Centraliza todo o conteúdo dentro do header */
+  align-items: center;  /* Alinha os itens verticalmente no centro */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Coloca a logo à esquerda e o texto ao centro */
+  align-items: center;  /* Alinha verticalmente os itens */
+  width: 80%;  /* Limita a largura do container */
+}
+
+.header-logo {
+  height: 60px;
+  margin-right: 0px;
+}
+
+.header-text {
+  text-align: center;
+  margin-left: 0;  /* Centraliza o h1 e o p */
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin: 5px 0 0;  /* Adiciona um pequeno espaçamento entre o h1 e o p */
+}
+
+.header-text a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 0%;
+}
+
+.home {
+  text-align: center;  /* Centraliza o conteúdo da seção */
+  padding: 0;
+}
+
+.home img {
+  max-width: 100%;  /* Faz a imagem ajustar-se à largura da seção */
+  height: auto;  /* Mantém a proporção da imagem */
+  border-radius: 10px;  /* Opcional: faz a borda da imagem arredondada */
+}
+
+div .home {
+  padding: 20px;
+  margin: 0;
+  border: 0;
+}
+
+div .teams {
+  padding: 20px;
+  margin: 0;
+  border: 0;
+}
+
+div .players {
+  padding: 20px;
+  margin: 0;
+  border: 0;
+}
+
+section {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f7f7f7;
+}
+
+footer {
+  background-color: #003580;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+footer p {
+  margin: 0;
+}
