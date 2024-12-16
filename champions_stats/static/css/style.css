@@ -113,3 +113,31 @@ footer {
 footer p {
   margin: 0;
 }
+
+#play-button {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: icon-size;
+    height: icon-size;
+    margin-left: icon-size/5;
+    margin-right: icon-size/5;
+    border-radius: icon-size*border-radius;
+    overflow: hidden;
+    &::before, &::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transition: all 0.25s ease;
+      border-radius: icon-size*border-radius;
+    }
+}
+
+#play-button:hover {
+  background-color: #002060;
+  color: white;
+}
+
