@@ -1,0 +1,42 @@
+{% extends 'champions_stats/base.html' %}
+{% load static %}  
+
+{% block content %}
+<div class="teams">
+    <div class="filter-club">
+        <h2 class="filter-title">Clubs</h2>
+        <select name="club-filter" id="club-filter">
+            <option value="" select hidden>Filter by country</option>
+            <option value="all">All</option>
+            {% for country in countries %}
+                <option value="{{ country }}">{{ country }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="teams-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Crest</th>
+                    <th>Club</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody id="teams-table">
+                {% for team in teams %}
+                    <tr data-team="{{ team.team }}" data-country="{{ team.country }}">
+                        <td>
+                            {% if team.logo %}
+                                <img src="{{ team.logo }}" alt="Logo do {{ team.team }}" style="height: 50px;">
+                            {% endif %}
+                        </td>
+                        <td>{{ team.team }}</td>
+                        <td>{{ team.country }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>            
+        </table>
+    </div>
+</div>
+{% endblock %}

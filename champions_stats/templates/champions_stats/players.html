@@ -1,0 +1,36 @@
+{% extends 'champions_stats/base.html' %}
+{% load static %}   
+
+{% block content %}
+<div class="players">
+    <h2>Players</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Position</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                        <tr>
+                            <td class="player-table">
+                                <div class="player-info">
+                                    <img src="{{ player.player_image }}" 
+                                         alt="{{ player.player_name }} image" class="player-image">
+                                    <span class="player-name">{{ player.player_name }}</span>
+                                </div>
+                            </td>
+                            <td>{{ player.field_position }}</td>
+                            <td>
+                                {% if player.id_team.logo %}
+                                    <img src="{{ player.id_team.logo }}" alt="Logo do {{ player.team_name }}" style="height: 50px;">
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

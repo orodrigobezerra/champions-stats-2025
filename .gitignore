@@ -1,0 +1,39 @@
+# Arquivos de banco de dados
+*.sqlite3
+*.db
+*.sql
+
+# Configurações e variáveis de ambiente
+local_settings.py
+settings.py
+.env
+
+# Migrações
+migrations/__pycache__/
+
+# Arquivos de compilação Python
+*.pyc
+__pycache__/
+
+# Ambiente virtual
+venv/
+env/
+*.venv
+
+# Arquivos de log
+*.log
+
+# Arquivos de cache
+*.cache
+*.log
+
+# Arquivos estáticos e de mídia
+static/
+media/
+
+# Arquivos temporários e de configuração do editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-workspace

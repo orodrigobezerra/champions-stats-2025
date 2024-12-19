@@ -1,0 +1,10 @@
+Database - Kaggle
+
+https://www.kaggle.com/datasets/pabloramoswilkins/ucl-2025-players-data
+
+Dados coletados até o dia 4 da competição
+
+
+Referência frontend
+
+https://www.uefa.com/uefachampionsleague/statistics/
