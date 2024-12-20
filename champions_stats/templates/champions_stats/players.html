@@ -3,34 +3,46 @@
 
 {% block content %}
 <div class="players">
-    <h2>Players</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Position</th>
-                        <th>Team</th>
+    <div class="filter-club">
+        <h2>Players</h2>
+        <select name="player-filter" id="player-filter">
+            <option value="" select hidden>Filter by club</option>
+            <option value="all">All</option>
+            {% for club in clubs %}
+                <option value="{{ club|lower }}">{{ club }}</option>
+            {% endfor %}
+        </select>      
+    </div>
+
+    <div class="players-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Position</th>
+                    <th>Team</th>
+                </tr>
+            </thead>
+            <tbody id="player-table">
+                {% for player in players %}
+                    <tr data-club="{{ player.team_name|lower }}">
+                        <td>
+                            <div class="player-info">
+                                <img src="{{ player.player_image }}" 
+                                     alt="{{ player.player_name }} image" class="player-image">
+                                <span class="player-name">{{ player.player_name }}</span>
+                            </div>
+                        </td>
+                        <td>{{ player.field_position }}</td>
+                        <td>
+                            {% if player.id_team.logo %}
+                                <img src="{{ player.id_team.logo }}" alt="Logo do {{ player.team_name }}" style="height: 50px;">
+                            {% endif %}
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    {% for player in players %}
-                        <tr>
-                            <td class="player-table">
-                                <div class="player-info">
-                                    <img src="{{ player.player_image }}" 
-                                         alt="{{ player.player_name }} image" class="player-image">
-                                    <span class="player-name">{{ player.player_name }}</span>
-                                </div>
-                            </td>
-                            <td>{{ player.field_position }}</td>
-                            <td>
-                                {% if player.id_team.logo %}
-                                    <img src="{{ player.id_team.logo }}" alt="Logo do {{ player.team_name }}" style="height: 50px;">
-                                {% endif %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

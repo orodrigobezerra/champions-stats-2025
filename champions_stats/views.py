@@ -22,11 +22,15 @@ def players(request):
     # Buscando os jogadores
     players = Players.objects.all()  # Obtendo todos os jogadores
 
+    clubs = Players.objects.values_list(
+        'id_team__team', flat=True).distinct().order_by('id_team__team')
+
     # Passando os dados para o template
     return render(
-        request,
-        'champions_stats/players.html',
-        {'players': players}
+        request, 'champions_stats/players.html', {
+            'players': players,
+            'clubs': clubs
+        }
     )
 
 
