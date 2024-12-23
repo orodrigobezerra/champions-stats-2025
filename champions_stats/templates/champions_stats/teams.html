@@ -6,10 +6,14 @@
     <div class="filter-club">
         <h2 class="filter-title">Clubs</h2>
         <select name="club-filter" id="club-filter">
-            <option value="" select hidden>Filter by country</option>
-            <option value="all">All</option>
+            <option value="all" {% if request.GET.country == "all" or not request.GET.country %}selected{% endif %}>
+                All
+            </option>
             {% for country in countries %}
-                <option value="{{ country }}">{{ country }}</option>
+            <option value="{{ country|lower }}" 
+                {% if request.GET.country == country|lower %}selected{% endif %}>
+                {{ country }}
+            </option>
             {% endfor %}
         </select>
     </div>
@@ -24,7 +28,7 @@
                 </tr>
             </thead>
             <tbody id="teams-table">
-                {% for team in teams %}
+                {% for team in page_obj %}
                     <tr data-team="{{ team.team }}" data-country="{{ team.country }}">
                         <td>
                             {% if team.logo %}
@@ -34,9 +38,24 @@
                         <td>{{ team.team }}</td>
                         <td>{{ team.country }}</td>
                     </tr>
-                {% endfor %}
-            </tbody>            
+                {% endfor %}                
+            </tbody>        
         </table>
     </div>
 </div>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+    <a href="?page=1&country={{ request.GET.country }}">First</a>
+    <a href="?page={{ page_obj.previous_page_number }}&country={{ request.GET.country }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}&country={{ request.GET.country }}">Next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}&country={{ request.GET.country }}">Last</a>
+    {% endif %}
+</div>
+
 {% endblock %}

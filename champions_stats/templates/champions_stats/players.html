@@ -6,13 +6,16 @@
     <div class="filter-club">
         <h2>Players</h2>
         <select name="player-filter" id="player-filter">
-            <option value="" select hidden>Filter by club</option>
             <option value="all">All</option>
             {% for club in clubs %}
-                <option value="{{ club|lower }}">{{ club }}</option>
+            <option value="{{ club|lower }}" 
+                {% if request.GET.club == club|lower %}selected{% endif %}>
+                {{ club }}
+            </option>
             {% endfor %}
-        </select>      
+        </select>
     </div>
+    
 
     <div class="players-table">
         <table>
@@ -24,7 +27,7 @@
                 </tr>
             </thead>
             <tbody id="player-table">
-                {% for player in players %}
+                {% for player in page_obj %}
                     <tr data-club="{{ player.team_name|lower }}">
                         <td>
                             <div class="player-info">
@@ -45,4 +48,19 @@
         </table>
     </div>
 </div>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page=1&club={{ request.GET.club }}">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}&club={{ request.GET.club }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&club={{ request.GET.club }}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}&club={{ request.GET.club }}">Last</a>
+    {% endif %}
+</div>
+
 {% endblock %}
