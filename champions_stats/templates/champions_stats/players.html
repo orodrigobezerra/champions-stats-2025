@@ -32,14 +32,19 @@
                         <td>
                             <div class="player-info">
                                 <img src="{{ player.player_image }}" 
-                                     alt="{{ player.player_name }} image" class="player-image">
+                                     alt="{{ player.player_name }} image"
+                                     title="{{ player.player_name }} photo"
+                                     class="player-image">
                                 <span class="player-name">{{ player.player_name }}</span>
                             </div>
                         </td>
                         <td>{{ player.field_position }}</td>
                         <td>
                             {% if player.id_team.logo %}
-                                <img src="{{ player.id_team.logo }}" alt="Logo do {{ player.team_name }}" style="height: 50px;">
+                                <img src="{{ player.id_team.logo }}"
+                                alt="Logo do {{ player.id_team }}"
+                                title="{{ player.id_team.team }}"
+                                style="height: 50px;">
                             {% endif %}
                         </td>
                     </tr>

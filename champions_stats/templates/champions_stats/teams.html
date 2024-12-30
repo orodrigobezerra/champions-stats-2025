@@ -5,12 +5,13 @@
 <div class="teams">
     <div class="filter-club">
         <h2 class="filter-title">Clubs</h2>
+        <label for="club-filter"></label>
         <select name="club-filter" id="club-filter">
             <option value="all" {% if request.GET.country == "all" or not request.GET.country %}selected{% endif %}>
                 All
             </option>
             {% for country in countries %}
-            <option value="{{ country|lower }}" 
+            <option value="{{ country|lower }}"
                 {% if request.GET.country == country|lower %}selected{% endif %}>
                 {{ country }}
             </option>
@@ -32,7 +33,10 @@
                     <tr data-team="{{ team.team }}" data-country="{{ team.country }}">
                         <td>
                             {% if team.logo %}
-                                <img src="{{ team.logo }}" alt="Logo do {{ team.team }}" style="height: 50px;">
+                                <img src="{{ team.logo }}"
+                                alt="Logo do {{ team.team }}"
+                                title="{{ team.team }} crest"
+                                style="height: 50px;">
                             {% endif %}
                         </td>
                         <td>{{ team.team }}</td>
